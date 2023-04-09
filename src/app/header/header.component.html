@@ -17,8 +17,8 @@
                     <!-- Top Right -->
                     <div class="right-content">
                         <ul class="list-main">
-                            <li><i class="ti-location-pin"></i> Store location</li>
-                            <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
+                            <!-- <li><i class="ti-location-pin"></i> Store location</li>
+                            <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li> -->
                             <li><i class="ti-user"></i> <a href="#">My account</a></li>
                             <li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
                         </ul>
@@ -35,7 +35,7 @@
                 <div class="col-lg-2 col-md-2 col-12">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.html"><img src="assets/images/logo.png" alt="logo"></a>
+                        <a routerLink="index"><img src="assets/images/logo.png" alt="logo"></a>
                         <!-- <h5 style="color:#f7941d">Wintech Hub .</h5> -->
                     </div>
                     <!--/ End Logo -->
@@ -86,7 +86,7 @@
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
                                     <span>2 Items</span>
-                                    <a href="#">View Cart</a>
+                                    <a routerLink="cart">View Cart</a>
                                 </div>
                                 <ul class="shopping-list">
                                     <li>
@@ -111,7 +111,7 @@
                                         <span>Total</span>
                                         <span class="total-amount">$134.00</span>
                                     </div>
-                                    <a href="checkout.html" class="btn animate">Checkout</a>
+                                    <a routerLink="checkout" class="btn animate">Checkout</a>
                                 </div>
                             </div>
                             <!--/ End Shopping Item -->
@@ -130,11 +130,11 @@
                         <div class="all-category">
                             <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
                             <ul class="main-category">
-                                <li><a href="#">New Arrivals <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                <li><a href="#">IT Services <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                     <ul class="sub-category">
-                                        <li><a href="#">accessories</a></li>
+                                        <!-- <li><a href="#">accessories</a></li>
                                         <li><a href="#">best selling</a></li>
-                                        <li><a href="#">top 100 offer</a></li>
+                                        <li><a href="#">top 100 offer</a></li> -->
                                         <!-- <li><a href="#">sunglass</a></li>
                                         <li><a href="#">watch</a></li>
                                         <li><a href="#">man’s product</a></li>
@@ -143,7 +143,7 @@
                                         <li><a href="#">denim </a></li> -->
                                     </ul>
                                 </li>
-                                <li class="main-mega"><a href="#">best selling <i class="fa fa-angle-right"
+                                <li class="main-mega"><a href="#">Gaming <i class="fa fa-angle-right"
                                             aria-hidden="true"></i></a>
                                     <ul class="mega-menu">
                                         <li class="single-menu">
@@ -202,16 +202,16 @@
                                 <div class="navbar-collapse">
                                     <div class="nav-inner">
                                         <ul class="nav main-menu menu navbar-nav">
-                                            <li class="active"><a href="#">Home</a></li>
+                                            <li><a routerLink="index">Home</a></li>
                                             <!-- <li><a href="#">Product</a></li> -->
                                             <!-- <li><a href="#">Service</a></li> -->
-                                            <li><a href="#">Shop<i class="ti-angle-down"></i><span
+                                            <li><a routerLink="shop">Shop<span
                                                         class="new">New</span></a>
-                                                <ul class="dropdown">
+                                                <!-- <ul class="dropdown">
                                                     <li><a href="shop-grid.html">Shop Grid</a></li>
                                                     <li><a href="cart.html">Cart</a></li>
                                                     <li><a href="checkout.html">Checkout</a></li>
-                                                </ul>
+                                                </ul> -->
                                             </li>
                                             <!-- <li><a href="#">Pages</a></li> -->
                                             <!-- <li><a href="#">Blog<i class="ti-angle-down"></i></a>
@@ -219,7 +219,7 @@
                                                     <li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
                                                 </ul>
                                             </li> -->
-                                            <li><a href="contact.html">Contact Us</a></li>
+                                            <li><a routerLink="contact">Contact Us</a></li>
                                         </ul>
                                     </div>
                                 </div>
