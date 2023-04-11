@@ -20,6 +20,7 @@ import { RechargeScreenComponent } from './recharge-screen/recharge-screen.compo
 import { LoginComponent } from './login/login.component';
 import { MainlayoutComponent } from './mainlayout/mainlayout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     GooglePayButtonModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
