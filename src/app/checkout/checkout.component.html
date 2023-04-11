@@ -13,11 +13,11 @@
     </div>
 </div>
 <!-- End Breadcrumbs -->
-        
+
 <!-- Start Checkout -->
 <section class="shop checkout section">
     <div class="container">
-        <div class="row"> 
+        <div class="row">
             <div class="col-lg-8 col-12">
                 <div class="checkout-form">
                     <h2>Make Your Checkout Here</h2>
@@ -362,7 +362,7 @@
                 <div class="order-details">
                     <!-- Order Widget -->
                     <div class="single-widget">
-                        <h2>CART  TOTALS</h2>
+                        <h2>CART TOTALS</h2>
                         <div class="content">
                             <ul>
                                 <li>Sub Total<span>$330.00</span></li>
@@ -377,9 +377,12 @@
                         <h2>Payments</h2>
                         <div class="content">
                             <div class="checkbox">
-                                <label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label>
-                                <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Cash On Delivery</label>
-                                <label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox"> PayPal</label>
+                                <label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox">
+                                    Check Payments</label>
+                                <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Cash
+                                    On Delivery</label>
+                                <label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox">
+                                    PayPal</label>
                             </div>
                         </div>
                     </div>
@@ -396,6 +399,11 @@
                         <div class="content">
                             <div class="button">
                                 <a href="#" class="btn">proceed to checkout</a>
+                            </div>
+                            <div class="button">
+                                <google-pay-button style="position: relative;top: 10px;" environment="TEST"  [buttonSizeMode]="isCustomSize ? 'fill' : 'static'"
+                                [paymentRequest]="payment" [style.width.px]="buttonWidth" [style.height.px]="buttonHeight"
+                                (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
                             </div>
                         </div>
                     </div>

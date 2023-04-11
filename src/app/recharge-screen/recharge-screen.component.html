@@ -1,0 +1,61 @@
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bread-inner">
+                    <ul class="bread-list">
+                        <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
+                        <li class="active"><a href="blog-single.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
+
+<!-- Start Contact -->
+<section id="contact-us" class="contact-us section">
+    <div class="container">
+        <div class="contact-head">
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <img src="https://via.placeholder.com/550x550" alt="">
+                </div>
+                <div class="col-lg-6 col-12">
+                    <h1>title titletitletitletitle</h1>
+                    <h2 class="price">$ 50.0 </h2>
+                    <span>descrtion descrtion descrtion descrtion descrtiondescrtiondescrtiondescrtion descrtion descrtion descrtion descrtion descrtiondescrtiondescrtiondescrtion descrtion descrtion descrtion descrtion descrtiondescrtiondescrtiondescrtion descrtion descrtion descrtion descrtion descrtiondescrtiondescrtiondescrtion descrtion descrtion descrtion descrtion descrtiondescrtiondescrtiondescrtion descrtion descrtion descrtion descrtion descrtiondescrtiondescrtiondescrtion descrtion descrtion descrtion descrtion descrtiondescrtiondescrtiondescrtion descrtion descrtion descrtion descrtion descrtiondescrtiondescrtiondescrtion</span>
+                    <div class="col" style="margin-top: 10%;">
+                        <form class="form" method="post" action="mail/mail.php">
+                            <div class="row">
+                                <div class="col-lg-12 col-12">
+                                    <div class="form-group">
+                                        <label style="margin-right: 20px;">Select Game</label>
+                                        <select name="company_name" id="company">
+                                            <option value="company" selected="selected">Panda Master</option>
+                                            <option>Orion Stars</option>
+                                            <option>Milkyway</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" style="width: 50%;">
+                                        <label>Enter Ammount you want to deposit<span>*</span></label>
+                                        <input name="name" type="text" placeholder="Enter Ammount">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <google-pay-button style="position: relative;top: 10px;" environment="TEST"
+                            [buttonSizeMode]="isCustomSize ? 'fill' : 'static'" [paymentRequest]="payment"
+                            [style.width.px]="buttonWidth" [style.height.px]="buttonHeight"
+                            (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<app-newsletter></app-newsletter>

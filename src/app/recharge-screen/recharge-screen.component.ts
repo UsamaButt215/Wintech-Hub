@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss']
+  selector: 'app-recharge-screen',
+  templateUrl: './recharge-screen.component.html',
+  styleUrls: ['./recharge-screen.component.scss']
 })
-export class CheckoutComponent implements OnInit {
+export class RechargeScreenComponent {
+  quantityCount: number = 0;
   payment!: google.payments.api.PaymentDataRequest
   buttonType = "buy";
   isCustomSize = false;
@@ -47,6 +48,9 @@ export class CheckoutComponent implements OnInit {
         countryCode: 'US'
       }
     }
+
   }
-  onLoadPaymentData(ddd:any){}
+
+  onLoadPaymentData(ddd: any) { }
+
 }

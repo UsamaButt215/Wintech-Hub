@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,12 @@ import { ContactComponent } from './contact/contact.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ShopComponent } from './shop/shop.component';
+import { DetailsComponent } from './details/details.component';
+
+import { GooglePayButtonModule } from '@google-pay/button-angular';
+import { RechargeScreenComponent } from './recharge-screen/recharge-screen.component';
+import { LoginComponent } from './login/login.component';
+import { MainlayoutComponent } from './mainlayout/mainlayout.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +32,19 @@ import { ShopComponent } from './shop/shop.component';
     ContactComponent,
     CartComponent,
     CheckoutComponent,
-    ShopComponent
+    ShopComponent,
+    DetailsComponent,
+    RechargeScreenComponent,
+    LoginComponent,
+    MainlayoutComponent
   ],
   imports: [
+    GooglePayButtonModule,
     BrowserModule,
     AppRoutingModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,70 +1,50 @@
 <header class="header shop">
-    <!-- Topbar -->
     <div class="topbar">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-12">
-                    <!-- Top Left -->
                     <div class="top-left">
                         <ul class="list-main">
                             <li><i class="ti-headphone-alt"></i> +92 301-4277187</li>
                             <li><i class="ti-email"></i> support@Wintech.com</li>
                         </ul>
                     </div>
-                    <!--/ End Top Left -->
                 </div>
                 <div class="col-lg-8 col-md-12 col-12">
-                    <!-- Top Right -->
                     <div class="right-content">
                         <ul class="list-main">
-                            <!-- <li><i class="ti-location-pin"></i> Store location</li>
-                            <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li> -->
                             <li><i class="ti-user"></i> <a href="#">My account</a></li>
-                            <li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+                            <li><i class="ti-power-off"></i><a routerLink="/login">Login</a></li>
                         </ul>
                     </div>
-                    <!-- End Top Right -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Topbar -->
     <div class="middle-inner">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-12">
-                    <!-- Logo -->
                     <div class="logo">
-                        <a routerLink="index"><img src="assets/images/logo.png" alt="logo"></a>
-                        <!-- <h5 style="color:#f7941d">Wintech Hub .</h5> -->
+                        <a routerLink="/"><img src="assets/images/logo.png" alt="logo"></a>
                     </div>
-                    <!--/ End Logo -->
-                    <!-- Search Form -->
                     <div class="search-top">
                         <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-                        <!-- Search Form -->
                         <div class="search-top">
                             <form class="search-form">
                                 <input type="text" placeholder="Search here..." name="search">
                                 <button value="search" type="submit"><i class="ti-search"></i></button>
                             </form>
                         </div>
-                        <!--/ End Search Form -->
                     </div>
-                    <!--/ End Search Form -->
                     <div class="mobile-nav"></div>
                 </div>
                 <div class="col-lg-8 col-md-7 col-12">
                     <div class="search-bar-top">
                         <div class="search-bar">
-                            <!-- <select>
-                                <option selected="selected">All Category</option>
-                                <option>watch</option>
-                                <option>mobile</option>
-                                <option>kid’s item</option>
-                            </select> -->
                             <form>
-                                <input name="search" style="width: 473px;" placeholder="Search Products Here....." type="search">
+                                <input name="search" style="width: 473px;" placeholder="Search Products Here....."
+                                    type="search">
                                 <button class="btnn"><i class="ti-search"></i></button>
                             </form>
                         </div>
@@ -72,7 +52,6 @@
                 </div>
                 <div class="col-lg-2 col-md-3 col-12">
                     <div class="right-bar">
-                        <!-- Search Form -->
                         <div class="sinlge-bar">
                             <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                         </div>
@@ -82,7 +61,6 @@
                         <div class="sinlge-bar shopping">
                             <a href="#" class="single-icon"><i class="ti-bag"></i> <span
                                     class="total-count">2</span></a>
-                            <!-- Shopping Item -->
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
                                     <span>2 Items</span>
@@ -114,7 +92,6 @@
                                     <a routerLink="checkout" class="btn animate">Checkout</a>
                                 </div>
                             </div>
-                            <!--/ End Shopping Item -->
                         </div>
                     </div>
                 </div>
@@ -132,15 +109,6 @@
                             <ul class="main-category">
                                 <li><a href="#">IT Services <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                     <ul class="sub-category">
-                                        <!-- <li><a href="#">accessories</a></li>
-                                        <li><a href="#">best selling</a></li>
-                                        <li><a href="#">top 100 offer</a></li> -->
-                                        <!-- <li><a href="#">sunglass</a></li>
-                                        <li><a href="#">watch</a></li>
-                                        <li><a href="#">man’s product</a></li>
-                                        <li><a href="#">ladies</a></li>
-                                        <li><a href="#">westrn dress</a></li>
-                                        <li><a href="#">denim </a></li> -->
                                     </ul>
                                 </li>
                                 <li class="main-mega"><a href="#">Gaming <i class="fa fa-angle-right"
@@ -184,52 +152,29 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <!-- <li><a href="#">accessories</a></li>
-                                <li><a href="#">top 100 offer</a></li>
-                                <li><a href="#">sunglass</a></li>
-                                <li><a href="#">watch</a></li>
-                                <li><a href="#">man’s product</a></li>
-                                <li><a href="#">ladies</a></li>
-                                <li><a href="#">westrn dress</a></li>
-                                <li><a href="#">denim </a></li> -->
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-9 col-12">
                         <div class="menu-area">
-                            <!-- Main Menu -->
                             <nav class="navbar navbar-expand-lg">
                                 <div class="navbar-collapse">
                                     <div class="nav-inner">
                                         <ul class="nav main-menu menu navbar-nav">
-                                            <li><a routerLink="index">Home</a></li>
-                                            <!-- <li><a href="#">Product</a></li> -->
-                                            <!-- <li><a href="#">Service</a></li> -->
-                                            <li><a routerLink="shop">Shop<span
-                                                        class="new">New</span></a>
-                                                <!-- <ul class="dropdown">
-                                                    <li><a href="shop-grid.html">Shop Grid</a></li>
-                                                    <li><a href="cart.html">Cart</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                </ul> -->
-                                            </li>
-                                            <!-- <li><a href="#">Pages</a></li> -->
-                                            <!-- <li><a href="#">Blog<i class="ti-angle-down"></i></a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
-                                                </ul>
-                                            </li> -->
-                                            <li><a routerLink="contact">Contact Us</a></li>
+                                            <ng-container *ngFor="let menu of menuList">
+                                                <li [ngClass]="{'active': menu.isActive === 'true'}" class="active">
+                                                    <a routerLink="{{menu.navigate}}"
+                                                        (click)="updateMenu(menu)">{{menu.title}}</a>
+                                                </li>
+                                            </ng-container>
                                         </ul>
                                     </div>
                                 </div>
                             </nav>
-                            <!--/ End Main Menu -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--/ End Header Inner -->
 </header>
