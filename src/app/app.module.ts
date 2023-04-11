@@ -19,6 +19,7 @@ import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { RechargeScreenComponent } from './recharge-screen/recharge-screen.component';
 import { LoginComponent } from './login/login.component';
 import { MainlayoutComponent } from './mainlayout/mainlayout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MainlayoutComponent } from './mainlayout/mainlayout.component';
   imports: [
     GooglePayButtonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

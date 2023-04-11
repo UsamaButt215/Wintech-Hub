@@ -401,9 +401,10 @@
                                 <a href="#" class="btn">proceed to checkout</a>
                             </div>
                             <div class="button">
-                                <google-pay-button style="position: relative;top: 10px;" environment="TEST"  [buttonSizeMode]="isCustomSize ? 'fill' : 'static'"
-                                [paymentRequest]="payment" [style.width.px]="buttonWidth" [style.height.px]="buttonHeight"
-                                (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
+                                <google-pay-button style="position: relative;top: 10px;" environment="TEST"
+                                    [buttonSizeMode]="isCustomSize ? 'fill' : 'static'" [paymentRequest]="payment"
+                                    [style.width.px]="buttonWidth" [style.height.px]="buttonHeight"
+                                    (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
                             </div>
                         </div>
                     </div>
