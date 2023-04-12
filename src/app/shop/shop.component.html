@@ -24,9 +24,9 @@
                     <div class="single-widget category">
                         <h3 class="title">Categories</h3>
                         <ul class="categor-list">
-                            <li><a >Design And Development</a></li>
-                            <li><a >It Services</a></li>
-                            <li><a >Gaming</a></li>
+                            <li><a>Design And Development</a></li>
+                            <li><a>It Services</a></li>
+                            <li><a>Gaming</a></li>
                         </ul>
                     </div>
                     <!--/ End Single Widget -->
@@ -61,7 +61,7 @@
                     </div> -->
                     <!--/ End Shop By Price -->
                     <!-- Single Widget -->
-                    
+
                     <!--/ End Single Widget -->
                     <!-- Single Widget -->
                     <!-- <div class="single-widget category">
@@ -120,7 +120,8 @@
                                 </a>
                                 <div class="button-head">
                                     <div class="product-action">
-                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View" routerLink="/details"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View"
+                                            routerLink="/details"><i class=" ti-eye"></i><span>Quick Shop</span></a>
                                     </div>
                                     <div class="product-action-2">
                                         <a title="Add to cart" (click)="addToCart(product)">Add to cart</a>
@@ -128,7 +129,7 @@
                                 </div>
                             </div>
                             <div class="product-content">
-                                <h3><a routerLink="/details">{{product.title}}</a></h3>
+                                <h3><a (click)="navigate(product.id)">{{product.title}}</a></h3>
                                 <div class="product-price">
                                     <span>${{product.price}}</span>
                                 </div>

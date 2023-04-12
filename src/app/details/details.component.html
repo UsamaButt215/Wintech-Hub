@@ -17,28 +17,47 @@
 <!-- Start Contact -->
 <section id="contact-us" class="contact-us section">
     <div class="container">
-            <div class="contact-head">
-                <div class="row">
-                    <div class="col-lg-6 col-12">
-                        <img src="https://via.placeholder.com/550x550" alt="">
+        <div class="contact-head">
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <img src="{{details?.image}}" alt="">
+                </div>
+                <div class="col-lg-6 col-12">
+                    <h1>{{details?.title}}</h1>
+                    <h2 class="price">$ {{details?.price}} </h2>
+                    <span>{{details?.description}}</span>
+                    <!--  -->
+                    <!-- <div class="col">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-primary" (click)="quantity(0)"> - </button>
+                            <input type="number" max="10" [value]="quantityCount">
+                            <button type="button" class="btn btn-primary" (click)="quantity(1)"> + </button>
+                        </div>
+                    </div> -->
+                    <!--  -->
+                    <div class="input-group">
+                        <div class="button minus">
+                            <button type="button" class="btn btn-primary btn-number" data-type="minus"
+                                data-field="quant[1]" (click)="quantity(0)">
+                                <i class="ti-minus"></i>
+                            </button>
+                        </div>
+                        <input type="text" name="quant[1]" class="input-number" data-min="1" data-max="100"
+                            value="{{quantityCount}}">
+                        <div class="button plus">
+                            <button type="button" class="btn btn-primary btn-number" data-type="plus"
+                                data-field="quant[1]" (click)="quantity(1)">
+                                <i class="ti-plus"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-lg-6 col-12">
-                        <h1>title titletitletitletitle</h1>
-                        <h2 class="price">$ 50.0 </h2>
-                        <span>descrtion descrtion descrtion descrtion descrtiondescrtiondescrtiondescrtion</span>
-                        <div class="col">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-primary" (click)="quantity(0)"> - </button>
-                                <input type="number" max="10" [value]="quantityCount">
-                                <button type="button" class="btn btn-primary" (click)="quantity(1)"> + </button>
-                              </div>
-                        </div>
-                        <div class="col">
-                            <a routerLink="/cart" style="top: 10px;color: white;" class="btn">Shop Now!</a>
+                    <!--  -->
+                    <div class="col">
+                        <a (click)="navigate()" style="top: 10px;color: white;" class="btn">Shop Now!</a>
 
-                        </div>
+                    </div>
 
-                        <!-- <div class="single-head">
+                    <!-- <div class="single-head">
                             <div class="single-info">
                                 <i class="fa fa-phone"></i>
                                 <h4 class="title">Call us Now:</h4>
@@ -63,13 +82,13 @@
                                 </ul>
                             </div>
                         </div> -->
-                        
-                        
-                    </div>
-                    
+
+
                 </div>
+
             </div>
         </div>
+    </div>
 </section>
 <app-newsletter></app-newsletter>
 <!--/ End Contact -->

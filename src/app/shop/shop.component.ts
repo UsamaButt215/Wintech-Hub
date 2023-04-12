@@ -43,4 +43,11 @@ export class ShopComponent implements OnInit {
     // }
     this.router.navigate(['/cart']);
   }
+  navigate(id){
+    this.router.navigate(
+      ['/details'],
+      { queryParams: { id: id } }
+    );
+    // routerLink="/details"
+  }
 }
