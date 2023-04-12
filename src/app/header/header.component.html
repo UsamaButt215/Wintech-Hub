@@ -5,16 +5,16 @@
                 <div class="col-lg-4 col-md-12 col-12">
                     <div class="top-left">
                         <ul class="list-main">
-                            <li><i class="ti-headphone-alt"></i> +92 301-4277187</li>
-                            <li><i class="ti-email"></i> support@Wintech.com</li>
+                            <li><i class="ti-headphone-alt"></i> +1 213 685 2220</li>
+                            <li><i class="ti-email"></i>admin@wintechhubllc.com</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-12 col-12">
                     <div class="right-content">
                         <ul class="list-main">
-                            <li><i class="ti-user"></i> <a href="#">My account</a></li>
-                            <li><i class="ti-power-off"></i><a routerLink="/login">Login</a></li>
+                            <!-- <li><i class="ti-user"></i> <a href="#">My account</a></li> -->
+                            <li><i (click)="logout()" class="ti-power-off"></i><a routerLink="/login">{{user}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -52,42 +52,41 @@
                 </div>
                 <div class="col-lg-2 col-md-3 col-12">
                     <div class="right-bar">
-                        <div class="sinlge-bar">
+                        <!-- <div class="sinlge-bar">
                             <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                        </div>
+                        </div> -->
                         <div class="sinlge-bar">
-                            <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                            <a class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                         </div>
                         <div class="sinlge-bar shopping">
                             <a href="#" class="single-icon"><i class="ti-bag"></i> <span
-                                    class="total-count">2</span></a>
+                                    class="total-count">{{productData.length}}</span></a>
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
-                                    <span>2 Items</span>
+                                    <span>{{productData.length}} Items</span>
                                     <a routerLink="cart">View Cart</a>
                                 </div>
                                 <ul class="shopping-list">
-                                    <li>
-                                        <a href="#" class="remove" title="Remove this item"><i
+                                    <li *ngFor="let product of productData">
+                                        <a (click)="removeCartProduct(product.id)" class="remove" title="Remove this item"><i
                                                 class="fa fa-remove"></i></a>
-                                        <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70"
-                                                alt="#"></a>
-                                        <h4><a href="#">Woman Ring</a></h4>
-                                        <p class="quantity">1x - <span class="amount">$99.00</span></p>
+                                        <a class="cart-img" href="#"><img src="{{product.image}}"></a>
+                                        <h4><a href="#">{{product.title}}</a></h4>
+                                        <p class="quantity">1x - <span class="amount">${{product.price}}</span></p>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a href="#" class="remove" title="Remove this item"><i
                                                 class="fa fa-remove"></i></a>
                                         <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70"
                                                 alt="#"></a>
                                         <h4><a href="#">Woman Necklace</a></h4>
                                         <p class="quantity">1x - <span class="amount">$35.00</span></p>
-                                    </li>
+                                    </li> -->
                                 </ul>
                                 <div class="bottom">
                                     <div class="total">
                                         <span>Total</span>
-                                        <span class="total-amount">$134.00</span>
+                                        <span class="total-amount">${{totalPrice}}</span>
                                     </div>
                                     <a routerLink="checkout" class="btn animate">Checkout</a>
                                 </div>
