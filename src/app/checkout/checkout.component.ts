@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/services/http.service';
 
 @Component({
   selector: 'app-checkout',
@@ -11,11 +12,16 @@ export class CheckoutComponent implements OnInit {
   isCustomSize = false;
   buttonWidth = 240;
   buttonHeight = 40;
-  isTop = window === window.top;
-  constructor() {
+  productId: number[];
+  productData: any[] = [];
+  totalPrice: number = 0;
+  constructor(private httpService: HttpService) {
 
   }
   ngOnInit() {
+    this.getPaymentDetails()
+  }
+  loadGpay() {
     this.payment = {
       apiVersion: 2,
       apiVersionMinor: 0,
@@ -42,11 +48,33 @@ export class CheckoutComponent implements OnInit {
       transactionInfo: {
         totalPriceStatus: 'FINAL',
         totalPriceLabel: 'Total',
-        totalPrice: '100.00',
+        totalPrice: this.totalPrice.toString(),
         currencyCode: 'USD',
         countryCode: 'US'
       }
     }
   }
-  onLoadPaymentData(ddd:any){}
+  getPaymentDetails() {
+    var strValue = localStorage.getItem('cart');
+    if (strValue) {
+      var res = strValue.split(',').map(x => { return parseInt(x) });
+      this.productId = res;
+      res.forEach((productId, index) => {
+        this.httpService.getSingleProductByID(productId).subscribe(resp => {
+          this.productData.push(resp.results[0]);
+          this.productData.forEach(element => {
+            element.quantity = 1;
+            if (index > 0)
+              this.totalPrice = this.totalPrice + Number(element.price);
+          });
+        }, err => {
+          console.log(err);
+        });
+      });
+      this.loadGpay();
+    }
+  }
+  onLoadPaymentData(data: any) { 
+    console.log(data);
+  }
 }

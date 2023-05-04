@@ -8,7 +8,7 @@ import { HttpService } from 'src/services/http.service';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  quantityCount: number = 0;
+  quantityCount: number = 1;
   details: any;
   constructor(private httpService: HttpService, private router: Router, private _activatedRoute: ActivatedRoute) {
 

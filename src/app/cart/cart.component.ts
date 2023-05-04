@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpService } from 'src/services/http.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class CartComponent implements OnInit {
   products: any[] = [];
   productData: any[] = [];
   totalPrice: number = 0;
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService, private router:Router) {
 
   }
   ngOnInit(): void {
@@ -56,5 +57,8 @@ export class CartComponent implements OnInit {
     this.productData = [];
     this.totalPrice = 0;
     localStorage.removeItem('cart');
+  }
+  checkOut(){
+    this.router.navigate(['checkout'])
   }
 }
