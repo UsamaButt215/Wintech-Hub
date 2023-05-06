@@ -24,6 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { AboutUsComponent } from './about-us/about-us.component';
+import { PoliciesComponent } from './policies/policies.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
     DetailsComponent,
     RechargeScreenComponent,
     LoginComponent,
-    MainlayoutComponent
+    MainlayoutComponent,
+    AboutUsComponent,
+    PoliciesComponent
   ],
   imports: [
     GooglePayButtonModule,

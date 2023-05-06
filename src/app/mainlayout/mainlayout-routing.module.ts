@@ -8,6 +8,8 @@ import { RechargeScreenComponent } from '../recharge-screen/recharge-screen.comp
 import { ShopComponent } from '../shop/shop.component';
 import { SliderComponent } from '../slider/slider.component';
 import { MainlayoutComponent } from './mainlayout.component';
+import { AboutUsComponent } from '../about-us/about-us.component';
+import { PoliciesComponent } from '../policies/policies.component';
 
 const routes = [
     {
@@ -20,6 +22,8 @@ const routes = [
             { path: 'details', component: DetailsComponent },
             { path: 'checkout', component: CheckoutComponent },
             { path: 'recharge', component: RechargeScreenComponent },
+            { path: 'about-us', component: AboutUsComponent },
+            { path: 'policies', component: PoliciesComponent },
         ]
     }
 ]
