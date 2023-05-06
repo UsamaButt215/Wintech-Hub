@@ -13,8 +13,8 @@
                 <div class="col-lg-8 col-md-12 col-12">
                     <div class="right-content">
                         <ul class="list-main">
-                            <!-- <li><i class="ti-user"></i> <a href="#">My account</a></li> -->
-                            <li><i (click)="logout()" class="ti-power-off"></i><a routerLink="/login">{{user}}</a></li>
+                            <li><i (click)="logout()" class="ti-power-off"></i><a
+                                    (click)="naviagte('/login')">{{user}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-12">
                     <div class="logo">
-                        <a routerLink="/"><img src="assets/images/logo.png" alt="logo"></a>
+                        <a (click)="naviagte('/')"><img src="assets/images/logo.png" alt="logo"></a>
                     </div>
                     <div class="search-top">
                         <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
@@ -64,12 +64,12 @@
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
                                     <span>{{productData.length}} Items</span>
-                                    <a routerLink="cart">View Cart</a>
+                                    <a (click)="naviagte('/cart')">View Cart</a>
                                 </div>
                                 <ul class="shopping-list">
                                     <li *ngFor="let product of productData">
-                                        <a (click)="removeCartProduct(product.id)" class="remove" title="Remove this item"><i
-                                                class="fa fa-remove"></i></a>
+                                        <a (click)="removeCartProduct(product.id)" class="remove"
+                                            title="Remove this item"><i class="fa fa-remove"></i></a>
                                         <a class="cart-img" href="#"><img src="{{product.image}}"></a>
                                         <h4><a href="#">{{product.title}}</a></h4>
                                         <p class="quantity">1x - <span class="amount">${{product.price}}</span></p>
@@ -88,7 +88,7 @@
                                         <span>Total</span>
                                         <span class="total-amount">${{totalPrice}}</span>
                                     </div>
-                                    <a routerLink="checkout" class="btn animate">Checkout</a>
+                                    <a (click)="naviagte('/checkout')" class="btn animate">Checkout</a>
                                 </div>
                             </div>
                         </div>
@@ -162,8 +162,7 @@
                                         <ul class="nav main-menu menu navbar-nav">
                                             <ng-container *ngFor="let menu of menuList">
                                                 <li [ngClass]="{'active': menu.isActive === 'true'}" class="active">
-                                                    <a routerLink="{{menu.navigate}}"
-                                                        (click)="updateMenu(menu)">{{menu.title}}</a>
+                                                    <a (click)="updateMenu(menu)">{{menu.title}}</a>
                                                 </li>
                                             </ng-container>
                                         </ul>

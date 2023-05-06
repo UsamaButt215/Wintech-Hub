@@ -4,8 +4,8 @@
             <div class="col-12">
                 <div class="bread-inner">
                     <ul class="bread-list">
-                        <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-                        <li class="active"><a href="blog-single.html">Cart</a></li>
+                        <li><a>Home<i class="ti-arrow-right"></i></a></li>
+                        <li class="active"><a>Cart</a></li>
                     </ul>
                 </div>
             </div>
@@ -27,14 +27,15 @@
                             <th class="text-center">UNIT PRICE</th>
                             <th class="text-center">QUANTITY</th>
                             <th class="text-center">TOTAL</th>
-                            <th class="text-center"><i (click)="removeAllProducts()" class="ti-trash remove-icon"></i></th>
+                            <th class="text-center"><i (click)="removeAllProducts()" class="ti-trash remove-icon"></i>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let product of productData">
                             <td class="image" data-title="No"><img src="{{product.image}}"></td>
                             <td class="product-des" data-title="Description">
-                                <p class="product-name"><a href="#">{{product.title}}</a></p>
+                                <p class="product-name"><a>{{product.title}}</a></p>
                                 <p class="product-des">{{product.description}}</p>
                             </td>
                             <td class="price" data-title="Price"><span>${{product.price}} </span></td>
@@ -96,7 +97,7 @@
                                 </ul>
                                 <div class="button5">
                                     <a (click)="checkOut()" class="btn">Checkout</a>
-                                    <a routerLink="/shop" class="btn">Continue shopping</a>
+                                    <a (click)="naviagte('/shop')" class="btn">Continue shopping</a>
                                 </div>
                             </div>
                         </div>

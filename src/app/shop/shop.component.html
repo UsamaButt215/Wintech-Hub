@@ -121,7 +121,8 @@
                                 <div class="button-head">
                                     <div class="product-action">
                                         <a data-toggle="modal" data-target="#exampleModal" title="Quick View"
-                                            routerLink="/details"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                            (click)="naviagte('/details')"><i class=" ti-eye"></i><span>
+                                                Quick Shop</span></a>
                                     </div>
                                     <div class="product-action-2">
                                         <a title="Add to cart" (click)="addToCart(product)">Add to cart</a>
@@ -129,7 +130,7 @@
                                 </div>
                             </div>
                             <div class="product-content">
-                                <h3><a (click)="navigate(product.id)">{{product.title}}</a></h3>
+                                <h3><a (click)="naviagteById(product.id)">{{product.title}}</a></h3>
                                 <div class="product-price">
                                     <span>${{product.price}}</span>
                                 </div>

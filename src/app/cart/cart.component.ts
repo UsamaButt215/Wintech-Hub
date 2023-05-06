@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpService } from 'src/services/http.service';
 
 @Component({
@@ -12,10 +13,13 @@ export class CartComponent implements OnInit {
   products: any[] = [];
   productData: any[] = [];
   totalPrice: number = 0;
-  constructor(private httpService: HttpService, private router:Router) {
+  constructor(private httpService: HttpService, private router: Router, private spinner: NgxSpinnerService) {
 
   }
   ngOnInit(): void {
+    this.productData = [];
+    this.productId = [];
+    this.totalPrice = 0;
     var strValue = localStorage.getItem('cart');
     if (strValue) {
       var res = strValue.split(',').map(x => { return parseInt(x) });
@@ -25,8 +29,13 @@ export class CartComponent implements OnInit {
           this.productData.push(resp.results[0])
           this.productData.forEach(element => {
             element.quantity = 1;
-            if (index > 0)
+            if (res.length == 1) {
               this.totalPrice = this.totalPrice + Number(element.price);
+            } else {
+              if (index > 0) {
+                this.totalPrice = this.totalPrice + Number(element.price);
+              }
+            }
           });
         }, err => {
           console.log(err);
@@ -41,6 +50,7 @@ export class CartComponent implements OnInit {
       var res = strValue.split(',').map(x => { return parseInt(x) });
       res.splice(res.findIndex(product => product == id), 1);
       localStorage.setItem('cart', res.toString());
+      this.ngOnInit();
     }
   }
   addQuantity(flag: number, product: any): void {
@@ -58,7 +68,20 @@ export class CartComponent implements OnInit {
     this.totalPrice = 0;
     localStorage.removeItem('cart');
   }
-  checkOut(){
+  checkOut() {
+    this.spinner.show();
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.spinner.hide();
+    }, 300);
     this.router.navigate(['checkout'])
+  }
+  naviagte(route) {
+    this.spinner.show();
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.spinner.hide();
+    }, 300);
+    this.router.navigate([route]);
   }
 }

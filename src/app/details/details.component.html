@@ -4,17 +4,14 @@
             <div class="col-12">
                 <div class="bread-inner">
                     <ul class="bread-list">
-                        <li><a routerLink="">Home<i class="ti-arrow-right"></i></a></li>
-                        <li class="active"><a routerLink="/contact">Contact</a></li>
+                        <li><a (click)="naviagte('/')">Home<i class="ti-arrow-right"></i></a></li>
+                        <li class="active"><a (click)="naviagte('/contact')">Contact</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- End Breadcrumbs -->
-
-<!-- Start Contact -->
 <section id="contact-us" class="contact-us section">
     <div class="container">
         <div class="contact-head">
@@ -23,10 +20,10 @@
                     <img src="{{details?.image}}" alt="">
                 </div>
                 <div class="col-lg-6 col-12">
-                    <h1>{{details?.title}}</h1>
-                    <h2 class="price">$ {{details?.price}} </h2>
-                    <span>{{details?.description}}</span>
-                    <div class="input-group">
+                    <h1 style="margin:10px 0px">{{details?.title}}</h1>
+                    <h2 class="price" style="margin:10px 0px">$ {{details?.price}} </h2>
+                    <span style="margin:10px 0px">{{details?.description}}</span>
+                    <div class="input-group" style="margin:10px 0px">
                         <div class="button minus">
                             <button type="button" class="btn btn-primary btn-number" data-type="minus"
                                 data-field="quant[1]" (click)="quantity(0)">
@@ -42,39 +39,9 @@
                             </button>
                         </div>
                     </div>
-                    <!--  -->
-                    <div class="col">
-                        <a (click)="navigate()" style="top: 10px;color: white;" class="btn">Shop Now!</a>
-
+                    <div class="col" style="padding: 0px;">
+                        <a (click)="boBack()" style="color: white;" class="btn">Shop Now!</a>
                     </div>
-
-                    <!-- <div class="single-head">
-                            <div class="single-info">
-                                <i class="fa fa-phone"></i>
-                                <h4 class="title">Call us Now:</h4>
-                                <ul>
-                                    <li>+123 456-789-1120</li>
-                                    <li>+522 672-452-1120</li>
-                                </ul>
-                            </div>
-                            <div class="single-info">
-                                <i class="fa fa-envelope-open"></i>
-                                <h4 class="title">Email:</h4>
-                                <ul>
-                                    <li><a href="mailto:info@yourwebsite.com">info@yourwebsite.com</a></li>
-                                    <li><a href="mailto:info@yourwebsite.com">support@yourwebsite.com</a></li>
-                                </ul>
-                            </div>
-                            <div class="single-info">
-                                <i class="fa fa-location-arrow"></i>
-                                <h4 class="title">Our Address:</h4>
-                                <ul>
-                                    <li>KA-62/1, Travel Agency, 45 Grand Central Terminal, New York.</li>
-                                </ul>
-                            </div>
-                        </div> -->
-
-
                 </div>
 
             </div>
@@ -82,4 +49,3 @@
     </div>
 </section>
 <app-newsletter></app-newsletter>
-<!--/ End Contact -->

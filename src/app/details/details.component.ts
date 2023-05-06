@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpService } from 'src/services/http.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { HttpService } from 'src/services/http.service';
 export class DetailsComponent implements OnInit {
   quantityCount: number = 1;
   details: any;
-  constructor(private httpService: HttpService, private router: Router, private _activatedRoute: ActivatedRoute) {
+  constructor(private httpService: HttpService, private router: Router, private _activatedRoute: ActivatedRoute, private spinner: NgxSpinnerService) {
 
   }
   ngOnInit() {
@@ -35,15 +36,31 @@ export class DetailsComponent implements OnInit {
       this.quantityCount = this.quantityCount + 1;
     }
   }
-  navigate() {
+
+
+  naviagte(route) {
+    this.spinner.show();
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.spinner.hide();
+    }, 300);
+    this.router.navigate([route]);
+  }
+  boBack() {
     var strValue = localStorage.getItem('cart');
     if (strValue) {
       var res = strValue.split(',').map(x => { return parseInt(x) });
       res.push(this.details.id);
       localStorage.setItem('cart', res.toString());
+      this.spinner.show();
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.spinner.hide();
+      }, 2000);
       this.router.navigate(['/cart']);
     } else {
       localStorage.setItem('cart', this.details.id.toString());
     }
   }
+
 }
