@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   menuList: any[] = [
     { 'title': 'Home', 'isActive': 'true', 'navigate': '' },
     { 'title': 'Shop', 'isActive': 'false', 'navigate': '/shop' },
+    { 'title': 'About Us', 'isActive': 'false', 'navigate': '/about-us' },
     { 'title': 'Contact Us', 'isActive': 'false', 'navigate': '/contact' },
   ];
   productData: any[] = [];

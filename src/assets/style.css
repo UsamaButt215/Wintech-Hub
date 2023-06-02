@@ -197,6 +197,7 @@ Version:1.0
 	color:#fff;
 	background:#F7941D;
 }
+
 #scrollUp {
 	right: 10px;
 	z-index: 33;
@@ -1258,10 +1259,15 @@ Version:1.0
 	height: auto;
 	z-index: 0;
 }
+/* .custom-btm.hero-slider .hero-text .btn:hover{
+	background: white !important;
+	color: black !important;
+} */
 .hero-slider .hero-text .btn:hover{
-	background:#F7941D;
-	color:#fff;
+	background:white;
+	color:black;
 }
+
 /* Start Hero Area 2 CSS */
 .hero-area2{
 	position:relative;

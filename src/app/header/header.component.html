@@ -6,7 +6,7 @@
                     <div class="top-left">
                         <ul class="list-main">
                             <li><i class="ti-headphone-alt"></i> +1 213 685 2220</li>
-                            <li><i class="ti-email"></i>admin@wintechhubllc.com</li>
+                            <li><i class="ti-email"></i>admin@wintechhubllc.net</li>
                         </ul>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-12">
                     <div class="logo">
-                        <a (click)="naviagte('/')"><img src="assets/images/logo.png" alt="logo"></a>
+                        <a (click)="naviagte('/')"><img src="assets\images\WinTechHub-Logo.png" alt="logo"></a>
                     </div>
                     <div class="search-top">
                         <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
@@ -106,13 +106,10 @@
                         <div class="all-category">
                             <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
                             <ul class="main-category">
-                                <li><a href="#">IT Services <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    <ul class="sub-category">
-                                    </ul>
+                                <li><a (click)="naviagte('/shop')">IT Services </a>
                                 </li>
-                                <li class="main-mega"><a href="#">Gaming <i class="fa fa-angle-right"
-                                            aria-hidden="true"></i></a>
-                                    <ul class="mega-menu">
+                                <li class="main-mega"><a (click)="naviagte('/shop')">Design And Development </a>
+                                    <!-- <ul class="mega-menu">
                                         <li class="single-menu">
                                             <a href="#" class="title-link">Shop Kid's</a>
                                             <div class="image">
@@ -149,7 +146,7 @@
                                                 <a href="#">Ladies Watch</a>
                                             </div>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
                             </ul>
                         </div>

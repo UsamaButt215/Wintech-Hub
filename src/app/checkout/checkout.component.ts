@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/services/http.service';
 
 @Component({
@@ -15,7 +18,19 @@ export class CheckoutComponent implements OnInit {
   productId: number[];
   productData: any[] = [];
   totalPrice: number = 0;
-  constructor(private httpService: HttpService) {
+  checkOutForm = new FormGroup({
+    firstName: new FormControl(null, [Validators.required]),
+    lastName: new FormControl(null, Validators.required),
+    email: new FormControl(null, Validators.required),
+    phone: new FormControl(null, Validators.required),
+    addressLineOne: new FormControl(null, Validators.required),
+    addressLineTwo: new FormControl(null, Validators.required),
+    postal: new FormControl(null, Validators.required),
+    company: new FormControl(null, Validators.required),
+    country: new FormControl(null, Validators.required),
+    state: new FormControl(null, Validators.required),
+  });
+  constructor(private httpService: HttpService, private _toastr: ToastrService, private _spinner: NgxSpinnerService) {
 
   }
   ngOnInit() {
@@ -42,13 +57,13 @@ export class CheckoutComponent implements OnInit {
         }
       ],
       merchantInfo: {
-        merchantId: '12345678901234567890',
-        merchantName: 'Demo Merchant'
+        merchantId: 'BCR2DN4TXK4OJWCG',
+        merchantName: 'WINTECHHUB LLC'
       },
       transactionInfo: {
         totalPriceStatus: 'FINAL',
         totalPriceLabel: 'Total',
-        totalPrice: this.totalPrice.toString(),
+        totalPrice: '1',
         currencyCode: 'USD',
         countryCode: 'US'
       }
@@ -74,7 +89,7 @@ export class CheckoutComponent implements OnInit {
       this.loadGpay();
     }
   }
-  onLoadPaymentData(data: any) { 
+  onLoadPaymentData(data: any) {
     console.log(data);
   }
 }

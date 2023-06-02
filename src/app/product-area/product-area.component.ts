@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { HttpService } from 'src/services/http.service';
 
 @Component({
   selector: 'app-product-area',
@@ -8,8 +9,15 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./product-area.component.scss']
 })
 export class ProductAreaComponent implements OnInit {
-  constructor(private spinner: NgxSpinnerService, private router: Router) { }
-  ngOnInit() { }
+  productData: any[] = [];
+  constructor(private spinner: NgxSpinnerService, private router: Router, private _httpService: HttpService) { }
+  ngOnInit() {
+    this._httpService.getAllProducts().subscribe(resp => {
+      this.productData = resp.results;
+    }, err => {
+      console.log(err);
+    })
+  }
   naviagte(route) {
     this.spinner.show();
     setTimeout(() => {
