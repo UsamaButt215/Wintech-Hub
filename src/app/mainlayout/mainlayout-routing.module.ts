@@ -21,7 +21,6 @@ const routes = [
             { path: 'shop', component: ShopComponent },
             { path: 'details', component: DetailsComponent },
             { path: 'checkout', component: CheckoutComponent },
-            { path: 'recharge', component: RechargeScreenComponent },
             { path: 'about-us', component: AboutUsComponent },
             { path: 'policies', component: PoliciesComponent },
         ]

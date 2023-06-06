@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
     { 'title': 'Shop', 'isActive': 'false', 'navigate': '/shop' },
     { 'title': 'About Us', 'isActive': 'false', 'navigate': '/about-us' },
     { 'title': 'Contact Us', 'isActive': 'false', 'navigate': '/contact' },
+    { 'title': 'Recharge', 'isActive': 'false', 'navigate': '/recharge' },
   ];
   productData: any[] = [];
   totalPrice: number = 0;

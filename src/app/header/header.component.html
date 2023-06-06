@@ -50,6 +50,7 @@
                                 <!-- <li><a href="#" role="menuitem" tabindex="0">Pages</a></li> -->
                                 <li><a routerLink="/about-us" role="menuitem" tabindex="0">About Us</a></li>
                                 <li><a routerLink="/contact" role="menuitem" tabindex="0">Contact Us</a></li>
+                                <li><a routerLink="/recharge" role="menuitem" tabindex="0">Recharge</a></li>
                             </ul>
                         </div>
                     </div>
@@ -115,7 +116,7 @@
     <!-- Header Inner -->
     <div class="header-inner">
         <div class="container">
-            <div class="cat-nav-head">
+            <div class="cat-nav-head" style="height: 60px;">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="all-category">
@@ -162,6 +163,8 @@
                                             </div>
                                         </li>
                                     </ul> -->
+                                </li>
+                                <li><a (click)="naviagte('/recharge')">Gaming </a>
                                 </li>
                             </ul>
                         </div>

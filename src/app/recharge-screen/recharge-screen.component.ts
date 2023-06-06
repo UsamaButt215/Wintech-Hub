@@ -13,6 +13,13 @@ export class RechargeScreenComponent {
   buttonWidth = 240;
   buttonHeight = 40;
   isTop = window === window.top;
+  games: any[] = [
+    { id: 1, name: 'Panda Master' },
+    { id: 2, name: 'Orion Stars' },
+    { id: 3, name: 'Milkyway' },
+    { id: 4, name: 'Firekrin' },
+    { id: 5, name: 'Ultra Panda' }
+  ];
   constructor() {
 
   }

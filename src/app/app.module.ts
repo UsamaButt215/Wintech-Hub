@@ -26,7 +26,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PoliciesComponent } from './policies/policies.component';
-
+import { RechargeComponent } from './recharge/recharge.component';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { PoliciesComponent } from './policies/policies.component';
     LoginComponent,
     MainlayoutComponent,
     AboutUsComponent,
-    PoliciesComponent
+    PoliciesComponent,
+    RechargeComponent
   ],
   imports: [
     GooglePayButtonModule,
@@ -54,6 +56,7 @@ import { PoliciesComponent } from './policies/policies.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatSelectModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule.forRoot({ type: 'timer' })
   ],
