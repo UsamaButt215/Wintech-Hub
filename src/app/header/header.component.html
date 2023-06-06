@@ -28,7 +28,7 @@
                     <div class="logo">
                         <a (click)="naviagte('/')"><img src="assets\images\WinTechHub-Logo.png" alt="logo"></a>
                     </div>
-                    <div class="search-top">
+                    <!-- <div class="search-top">
                         <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
                         <div class="search-top">
                             <form class="search-form">
@@ -36,8 +36,23 @@
                                 <button value="search" type="submit"><i class="ti-search"></i></button>
                             </form>
                         </div>
+                    </div> -->
+                    <div class="mobile-nav" (click)="toggleMenu()">
+                        <div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0"
+                                class="slicknav_btn slicknav_open" style="outline: none;"><span
+                                    class="slicknav_menutxt"></span><span class="slicknav_icon slicknav_no-text"><span
+                                        class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span
+                                        class="slicknav_icon-bar"></span></span></a>
+                            <ul *ngIf="menuToggle" class="slicknav_nav" aria-hidden="false" role="menu">
+                                <li class="active"><a href="#" role="menuitem" tabindex="0">Home</a></li>
+                                <li><a routerLink="/shop" role="menuitem" tabindex="0">Product</a></li>
+                                <!-- <li><a href="#" role="menuitem" tabindex="0">Service</a></li> -->
+                                <!-- <li><a href="#" role="menuitem" tabindex="0">Pages</a></li> -->
+                                <li><a routerLink="/about-us" role="menuitem" tabindex="0">About Us</a></li>
+                                <li><a routerLink="/contact" role="menuitem" tabindex="0">Contact Us</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="mobile-nav"></div>
                 </div>
                 <div class="col-lg-8 col-md-7 col-12">
                     <div class="search-bar-top">

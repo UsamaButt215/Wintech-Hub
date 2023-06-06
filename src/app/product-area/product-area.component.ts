@@ -18,12 +18,36 @@ export class ProductAreaComponent implements OnInit {
       console.log(err);
     })
   }
-  naviagte(route) {
+  naviagte(route, id?) {
     this.spinner.show();
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       this.spinner.hide();
     }, 300);
-    this.router.navigate([route]);
+    if (id) {
+      this.router.navigate([route], {
+        queryParams: {
+          id: id
+        }
+      });
+    } else {
+      this.router.navigate([route]);
+    }
+  }
+  addToCart(product: any): void {
+    let p: string;
+    if (localStorage.getItem('cart') && localStorage.getItem('cart') != undefined) {
+      p = localStorage.getItem('cart') ? localStorage.getItem('cart')?.toString()?.toString() : '';
+      p = p + ',' + product.id
+      localStorage.setItem('cart', p.toString())
+    } else {
+      localStorage.setItem('cart', product.id.toString())
+    }
+    this.spinner.show();
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.spinner.hide();
+    }, 300);
+    this.router.navigate(['/cart']);
   }
 }

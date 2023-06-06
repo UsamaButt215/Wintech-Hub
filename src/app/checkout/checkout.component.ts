@@ -70,17 +70,22 @@ export class CheckoutComponent implements OnInit {
     }
   }
   getPaymentDetails() {
-    var strValue = localStorage.getItem('cart');
+    let strValue = localStorage.getItem('cart');
     if (strValue) {
-      var res = strValue.split(',').map(x => { return parseInt(x) });
+      let res = strValue.split(',').map(x => { return parseInt(x) });
       this.productId = res;
       res.forEach((productId, index) => {
         this.httpService.getSingleProductByID(productId).subscribe(resp => {
           this.productData.push(resp.results[0]);
           this.productData.forEach(element => {
             element.quantity = 1;
-            if (index > 0)
+            if (res.length == 1) {
               this.totalPrice = this.totalPrice + Number(element.price);
+            } else {
+              if (index > 0) {
+                this.totalPrice = this.totalPrice + Number(element.price);
+              }
+            }
           });
         }, err => {
           console.log(err);

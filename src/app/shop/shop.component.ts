@@ -21,27 +21,14 @@ export class ShopComponent implements OnInit {
     });
   }
   addToCart(product: any): void {
-    console.log(product);
     let p: string;
     if (localStorage.getItem('cart') && localStorage.getItem('cart') != undefined) {
       p = localStorage.getItem('cart') ? localStorage.getItem('cart')?.toString()?.toString() : '';
       p = p + ',' + product.id
-      console.log(p + ',' + product.id)
       localStorage.setItem('cart', p.toString())
     } else {
       localStorage.setItem('cart', product.id.toString())
     }
-    // let cartItem: string | null = localStorage.getItem('cart') ? localStorage.getItem('cart') : 'null';
-    // if(cartItem != 'null'){
-    //   cartItem = product.id;
-    //   console.log(cartItem)
-    // }else{
-    //   cartItem.concat(product.id)
-    //   console.log(cartItem)
-    // }
-    // if (typeof (cartItem) === 'string') {
-    //   localStorage.setItem('cart', cartItem);
-    // }
     this.spinner.show();
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });

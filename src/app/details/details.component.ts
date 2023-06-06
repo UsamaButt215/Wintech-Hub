@@ -47,9 +47,9 @@ export class DetailsComponent implements OnInit {
     this.router.navigate([route]);
   }
   boBack() {
-    var strValue = localStorage.getItem('cart');
+    let strValue = localStorage.getItem('cart');
     if (strValue) {
-      var res = strValue.split(',').map(x => { return parseInt(x) });
+      let res = strValue.split(',').map(x => { return parseInt(x) });
       res.push(this.details.id);
       localStorage.setItem('cart', res.toString());
       this.spinner.show();
@@ -60,6 +60,12 @@ export class DetailsComponent implements OnInit {
       this.router.navigate(['/cart']);
     } else {
       localStorage.setItem('cart', this.details.id.toString());
+      this.spinner.show();
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.spinner.hide();
+      }, 2000);
+      this.router.navigate(['/cart']);
     }
   }
 

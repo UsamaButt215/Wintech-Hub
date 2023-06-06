@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   productData: any[] = [];
   totalPrice: number = 0;
   user: string = 'Login'
+  menuToggle:boolean = false;
   constructor(private httpService: HttpService, private spinner: NgxSpinnerService, private router: Router) {
 
   }
@@ -78,5 +79,8 @@ export class HeaderComponent implements OnInit {
       this.spinner.hide();
     }, 300);
     this.router.navigate([route]);
+  }
+  toggleMenu(){
+    this.menuToggle = !this.menuToggle
   }
 }
