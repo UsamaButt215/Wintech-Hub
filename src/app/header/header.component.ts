@@ -19,37 +19,62 @@ export class HeaderComponent implements OnInit {
   productData: any[] = [];
   totalPrice: number = 0;
   user: string = 'Login'
-  menuToggle:boolean = false;
+  menuToggle: boolean = false;
+
   constructor(private httpService: HttpService, private spinner: NgxSpinnerService, private router: Router) {
 
   }
+
   ngOnInit(): void {
-    let localUser = localStorage.getItem('user');
-    if (localUser && localUser != 'undefined' && localUser != 'null') {
-      this.user = localUser;
-    }
-    var strValue = localStorage.getItem('cart');
-    if (strValue) {
-      var res = strValue.split(',').map(x => { return parseInt(x) });
-      res.forEach((productId, index) => {
-        this.httpService.getSingleProductByID(productId).subscribe(resp => {
-          this.productData.push(resp.results[0])
-          this.productData.forEach(element => {
-            element.quantity = 1;
-            if (res.length == 1) {
-              this.totalPrice = this.totalPrice + Number(element.price);
-            } else {
-              if (index > 0) {
-                this.totalPrice = this.totalPrice + Number(element.price);
-              }
-            }
-          });
-        }, err => {
-          console.log(err);
-        });
-      });
-    }
+    this.getPaymentDetails()
+    // let localUser = localStorage.getItem('user');
+    // if (localUser && localUser != 'undefined' && localUser != 'null') {
+    //   this.user = localUser;
+    // }
+    // var strValue = localStorage.getItem('cart');
+    // if (strValue) {
+    //   var res = strValue.split(',').map(x => { return parseInt(x) });
+    //   res.forEach((productId, index) => {
+    //     this.httpService.getSingleProductByID(productId).subscribe(resp => {
+    //       this.productData.push(resp.results[0])
+    //       this.productData.forEach(element => {
+    //         element.quantity = 1;
+    //         if (res.length == 1) {
+    //           this.totalPrice = this.totalPrice + Number(element.price);
+    //         } else {
+    //           if (index > 0) {
+    //             this.totalPrice = this.totalPrice + Number(element.price);
+    //           }
+    //         }
+    //       });
+    //     }, err => {
+    //       console.log(err);
+    //     });
+    //   });
+    // }
   }
+  // get all product and calculate price
+  getPaymentDetails() {
+    let strValue = localStorage.getItem('cart');
+    let res = strValue.split(',').map(x => { return parseInt(x) });
+
+    let promises = [];
+    for (let productId of res) {
+      promises.push(this.httpService.getSingleProductByIDs(productId));
+    }
+
+    return Promise.all(promises).then(products => {
+      let totalPrice = 0;
+      for (let product of products) {
+        if (product.results) {
+          this.productData.push(product.results[0])
+          totalPrice += Number(product.results[0].price);
+        }
+      }
+      this.totalPrice = totalPrice;
+    });
+  }
+
   updateMenu(menuTarget: any) {
     this.menuList.forEach(menu => {
       menu.isActive = 'false';
@@ -57,6 +82,7 @@ export class HeaderComponent implements OnInit {
     menuTarget.isActive = 'true';
     this.naviagte(menuTarget.navigate)
   }
+
   removeCartProduct(id) {
     this.productData.splice(this.productData.findIndex(product => product.id == id), 1)
     var strValue = localStorage.getItem('cart');
@@ -66,6 +92,7 @@ export class HeaderComponent implements OnInit {
       localStorage.setItem('cart', res.toString());
     }
   }
+
   logout() {
     let localUser = localStorage.getItem('user');
     if (localUser) {
@@ -73,6 +100,7 @@ export class HeaderComponent implements OnInit {
       this.user = 'Login'
     }
   }
+
   naviagte(route) {
     this.spinner.show();
     setTimeout(() => {
@@ -81,7 +109,8 @@ export class HeaderComponent implements OnInit {
     }, 300);
     this.router.navigate([route]);
   }
-  toggleMenu(){
+
+  toggleMenu() {
     this.menuToggle = !this.menuToggle
   }
 }
