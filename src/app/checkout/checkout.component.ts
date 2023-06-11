@@ -46,23 +46,27 @@ export class CheckoutComponent implements OnInit, AfterViewInit, OnDestroy {
   // get all product and calculate price
   getPaymentDetails() {
     let strValue = localStorage.getItem('cart');
-    let res = strValue.split(',').map(x => { return parseInt(x) });
+    if (strValue) {
+      let res = strValue.split(',').map(x => { return parseInt(x) });
 
-    let promises = [];
-    for (let productId of res) {
-      promises.push(this.httpService.getSingleProductByIDs(productId));
-    }
-
-    return Promise.all(promises).then(products => {
-      let totalPrice = 0;
-      for (let product of products) {
-        totalPrice += Number(product.results[0].price);
+      let promises = [];
+      for (let productId of res) {
+        promises.push(this.httpService.getSingleProductByIDs(productId));
       }
-      this.totalPrice = totalPrice;
-      this.loadGpay();
-      this.showGPay = true;
-      this.gPayState(true);
-    });
+
+      return Promise.all(promises).then(products => {
+        let totalPrice = 0;
+        for (let product of products) {
+          totalPrice += Number(product.results[0].price);
+        }
+        this.totalPrice = totalPrice;
+        this.loadGpay();
+        this.showGPay = true;
+        this.gPayState(true);
+      });
+    } else {
+      return null;
+    }
   }
   // enable or disable gpay button!
   gPayState(state: boolean) {

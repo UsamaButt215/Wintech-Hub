@@ -27,10 +27,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPaymentDetails()
-    // let localUser = localStorage.getItem('user');
-    // if (localUser && localUser != 'undefined' && localUser != 'null') {
-    //   this.user = localUser;
-    // }
+    let localUser = localStorage.getItem('user');
+    if (localUser && localUser != 'undefined' && localUser != 'null') {
+      this.user = localUser;
+    }
     // var strValue = localStorage.getItem('cart');
     // if (strValue) {
     //   var res = strValue.split(',').map(x => { return parseInt(x) });
@@ -56,23 +56,27 @@ export class HeaderComponent implements OnInit {
   // get all product and calculate price
   getPaymentDetails() {
     let strValue = localStorage.getItem('cart');
-    let res = strValue.split(',').map(x => { return parseInt(x) });
-
-    let promises = [];
-    for (let productId of res) {
-      promises.push(this.httpService.getSingleProductByIDs(productId));
-    }
-
-    return Promise.all(promises).then(products => {
-      let totalPrice = 0;
-      for (let product of products) {
-        if (product.results) {
-          this.productData.push(product.results[0])
-          totalPrice += Number(product.results[0].price);
-        }
+    if(strValue){
+      let res = strValue.split(',').map(x => { return parseInt(x) });
+  
+      let promises = [];
+      for (let productId of res) {
+        promises.push(this.httpService.getSingleProductByIDs(productId));
       }
-      this.totalPrice = totalPrice;
-    });
+  
+      return Promise.all(promises).then(products => {
+        let totalPrice = 0;
+        for (let product of products) {
+          if (product.results) {
+            this.productData.push(product.results[0])
+            totalPrice += Number(product.results[0].price);
+          }
+        }
+        this.totalPrice = totalPrice;
+      });
+    }else{
+      return null;
+    }
   }
 
   updateMenu(menuTarget: any) {
