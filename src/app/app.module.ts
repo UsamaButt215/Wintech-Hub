@@ -27,7 +27,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PoliciesComponent } from './policies/policies.component';
 import { RechargeComponent } from './recharge/recharge.component';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,

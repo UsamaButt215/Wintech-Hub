@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { HttpService } from 'src/services/http.service';
 
 @Component({
@@ -9,12 +10,8 @@ import { HttpService } from 'src/services/http.service';
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss']
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent implements OnInit, AfterViewInit, OnDestroy {
   payment!: google.payments.api.PaymentDataRequest
-  buttonType = "buy";
-  isCustomSize = false;
-  buttonWidth = 240;
-  buttonHeight = 40;
   productId: number[];
   productData: any[] = [];
   totalPrice: number = 0;
@@ -26,16 +23,60 @@ export class CheckoutComponent implements OnInit {
     addressLineOne: new FormControl(null, Validators.required),
     addressLineTwo: new FormControl(null, Validators.required),
     postal: new FormControl(null, Validators.required),
-    company: new FormControl(null, Validators.required),
     country: new FormControl(null, Validators.required),
     state: new FormControl(null, Validators.required),
   });
-  constructor(private httpService: HttpService, private _toastr: ToastrService, private _spinner: NgxSpinnerService) {
+  showGPay: boolean = false;
+  statusChangesSubscription: Subscription;
+  constructor(private httpService: HttpService, private _toastr: ToastrService, private _spinner: NgxSpinnerService, private el: ElementRef) {
 
   }
   ngOnInit() {
-    this.getPaymentDetails()
+    this.getPaymentDetails();
   }
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.gPayState(true);
+      this.statusChangesSubscription = this.checkOutForm.statusChanges.subscribe((status) => {
+        if (status === 'VALID') this.gPayState(false);
+        if (status !== 'VALID') this.gPayState(true);
+      });
+    }, 1000);
+  }
+  // get all product and calculate price
+  getPaymentDetails() {
+    let strValue = localStorage.getItem('cart');
+    let res = strValue.split(',').map(x => { return parseInt(x) });
+
+    let promises = [];
+    for (let productId of res) {
+      promises.push(this.httpService.getSingleProductByIDs(productId));
+    }
+
+    return Promise.all(promises).then(products => {
+      let totalPrice = 0;
+      for (let product of products) {
+        totalPrice += Number(product.results[0].price);
+      }
+      this.totalPrice = totalPrice;
+      this.loadGpay();
+      this.showGPay = true;
+      this.gPayState(true);
+    });
+  }
+  // enable or disable gpay button!
+  gPayState(state: boolean) {
+    let gPayButton = this.el.nativeElement.querySelector('.gpay-card-info-container');
+    if (gPayButton) {
+      gPayButton.disabled = state;
+      if (state == true) {
+        gPayButton.style.opacity = 0.5;
+      } else {
+        gPayButton.style.opacity = 'unset';
+      }
+    }
+  }
+  // init gpay after getting total price
   loadGpay() {
     this.payment = {
       apiVersion: 2,
@@ -63,38 +104,54 @@ export class CheckoutComponent implements OnInit {
       transactionInfo: {
         totalPriceStatus: 'FINAL',
         totalPriceLabel: 'Total',
-        totalPrice: '1',
+        totalPrice: this.totalPrice.toString(),
         currencyCode: 'USD',
         countryCode: 'US'
       }
     }
   }
-  getPaymentDetails() {
-    let strValue = localStorage.getItem('cart');
-    if (strValue) {
-      let res = strValue.split(',').map(x => { return parseInt(x) });
-      this.productId = res;
-      res.forEach((productId, index) => {
-        this.httpService.getSingleProductByID(productId).subscribe(resp => {
-          this.productData.push(resp.results[0]);
-          this.productData.forEach(element => {
-            element.quantity = 1;
-            if (res.length == 1) {
-              this.totalPrice = this.totalPrice + Number(element.price);
-            } else {
-              if (index > 0) {
-                this.totalPrice = this.totalPrice + Number(element.price);
-              }
-            }
-          });
-        }, err => {
-          console.log(err);
-        });
-      });
-      this.loadGpay();
+  // google event triggered when payment is done
+  onLoadPaymentData(data: any) {
+    console.log('onLoadPaymentData', data);
+    if (data.detail.paymentMethodData) {
+      this._toastr.success("Payment Success!");
+      this.checkOutForm.reset();
+      this.gPayState(true);
     }
   }
-  onLoadPaymentData(data: any) {
-    console.log(data);
+  onClickGpay(ev) {
+    if (!this.checkOutForm.valid) {
+      ev.stopPropagation();
+      this._toastr.error('Please Fill All Required Fields');
+    }
+  }
+  ngOnDestroy(): void {
+    this.statusChangesSubscription.unsubscribe();
   }
 }
+
+// getPaymentDetails() {
+//   let strValue = localStorage.getItem('cart');
+//   if (strValue) {
+//     let res = strValue.split(',').map(x => { return parseInt(x) });
+//     this.productId = res;
+//     res.forEach((productId, index) => {
+//       this.httpService.getSingleProductByID(productId).subscribe(resp => {
+//         this.productData.push(resp.results[0]);
+//         this.productData.forEach((element) => {
+//           element.quantity = 1;
+//           if (res.length == 1) {
+//             this.totalPrice = this.totalPrice + Number(element.price);
+//           } else {
+//             if (index > 0) {
+//               this.totalPrice = this.totalPrice + Number(element.price);
+//             }
+//           }
+//         });
+//       }, err => {
+//         console.log(err);
+//       });
+//     });
+//     this.loadGpay();
+//   }
+// }

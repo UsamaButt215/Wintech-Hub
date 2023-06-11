@@ -19,6 +19,15 @@ export class HttpService {
   getSingleProductByID(id): Observable<any> {
     return this.httpClient.get(environment.baseUrl + 'api/getSingleProduct?id=' + id, { headers: this.headers });
   }
+  getSingleProductByIDs(id): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(environment.baseUrl + 'api/getSingleProduct?id=' + id, { headers: this.headers }).subscribe(response => {
+        resolve(response);
+      }, error => {
+        reject(error);
+      });
+    });
+  }
   sendMessage(data): Observable<any> {
     return this.httpClient.post(environment.baseUrl + 'api/messages/sendMessage', data, { headers: this.headers });
   }
